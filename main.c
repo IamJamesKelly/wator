@@ -5,7 +5,16 @@
 #include "Cell.h"
 #include "Fish.h"
 #include "Shark.h"
-
+/**
+*Make2dArray
+* -Create 2-d Array in memory
+*@param  int rows 
+*	-Rows of in array.
+*@param  int cols 
+*	-CoLs of in array.
+*@return Cell ** array
+* 	-return 2-D pointer cell Array
+*/
 Cell ** Make2dArray(int row,int col)
 {
 	Cell ** array;
@@ -16,6 +25,18 @@ Cell ** Make2dArray(int row,int col)
 
    return array;  
 }
+/**
+*randomEmptyCell
+* -Picks Random Empty Cell
+*@param  Cell ** world
+*	-2-D world array.
+*@param  int rows 
+*	-Rows of in array.
+*@param  int cols 
+*	-Cols of in array.
+*@return Cell * &world[randomRow][randomCol]
+* 	-return pointer to empty cell from Array
+*/
 Cell * randomEmptyCell(Cell ** world,int row,int col)
 {
 	int randomCol = rand() % row;
@@ -27,6 +48,18 @@ Cell * randomEmptyCell(Cell ** world,int row,int col)
 	}
 	return &world[randomRow][randomCol] ;
 }
+/**
+*PopulateWorld
+* -Populates the World array
+*@param  int nFish 
+*	-Number of fish to create.
+*@param  int rows 
+*	-Rows of in array.
+*@param  int cols 
+*	-CoLs of in array.
+*@param  Cell ** world
+*	-2-D world array.
+*/
 void PopulateWorld(int nFish,int nSharks,int rows, int cols,Cell ** world)
 {
 	int i;

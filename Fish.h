@@ -2,7 +2,14 @@
 #define FISH_H
 #include "Cell.h"
 
-
+/**
+*CheckIfEmty
+* -Check If cell is Empty
+*@param Cell * c 
+*	-Pointer to cell you won't to check.
+*@return int 0 or 1
+*	-o indicate the cell is not available
+*/
 int CheckIfEmty(Cell * M)
 {
 	if(M->shark == 0 && M->fish == 0)
@@ -11,6 +18,14 @@ int CheckIfEmty(Cell * M)
 	}
 	return 0;
 }
+/**
+*ChooseCell
+* -Choose a cell to move
+*@param Struct Move 
+*	-Cell Available To be Move too.
+*@return int Dirrection
+*	-Position in array of avaiable cell -1 if no position available..
+*/
 int ChooseCell(Move Available)
 {
 	int x = 0;
@@ -48,7 +63,14 @@ int ChooseCell(Move Available)
 	}
 	return Dirrection;
 }
-
+/**
+*FishMove
+* -Moves Fish pointer from one cell to the next, Spawns Next fish when spawntime raech's o
+*@param Cell * Movto 
+*	-Cell To Move too.
+*@param Cell * currentCell
+*	- current Cell contioning Fish Object .
+*/
 void FishMove(Cell * Moveto, Cell * currentCell){
 	if(currentCell->fish->SpawnTime == 0)
 	{
@@ -67,13 +89,34 @@ void FishMove(Cell * Moveto, Cell * currentCell){
 	
 }
 
+/**
+*FishUpadate
+* -Updates Fish
+*@param Cell * Fish 
+*	-Pointer to cell Containing Fish.
+*@param Cell ** tempworld 
+*	- 2d-Array Containg world Cells.
+*@param int x 
+*	-Row Cell is On.
+*@param int y 
+*	-Col cell On.
+@param int range 
+*	-Range represnts the number of cols and rows in the world used for wrap around.
+*/
 void FishUpdate(Cell * fish, Cell ** tempworld, int x, int y, int range)
 {   
 	Move Available;
+	
+	/**
+	*Picks Psition of cells around fish cell in world array
+	*/
 	int top = y - 1;
 	int bot = y + 1;
 	int left = x - 1;
 	int right = x + 1;
+	/**
+	*Add Wrap around if Move Poition out of range 
+	*/
 	if (top < 0)
 		top = range;
 	if (left < 0)
@@ -82,6 +125,9 @@ void FishUpdate(Cell * fish, Cell ** tempworld, int x, int y, int range)
 		right = 0;
 	if (bot > range)
 		bot = 0;
+	/**
+	*@param Array of Cell * to cells around fish
+	*/
 	Cell * array[4] = {&(tempworld)[x][top],&(tempworld)[x][bot],&(tempworld)[left][y],&(tempworld)[right][y]};
 	Available.up = CheckIfEmty(array[0]);
 	Available.down = CheckIfEmty(array[1]);
