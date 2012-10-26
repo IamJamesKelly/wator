@@ -4,16 +4,16 @@
 *Intailize the structs used In the Program
 */
 /**
-*@param Struct Fish 
-*Holds the Fish  data three int SpawnTime and moved.
+*@Name: Struct Fish 
+*@Brief: Holds the Fish  data three int SpawnTime and moved.
 */
 typedef struct{
 int moved; 
 int SpawnTime;
 }Fish;
 /**
-*@param Struct Shark 
-*Holds the shark data three int SpawnTime,StarveTime and moved.
+*@Name: Struct Shark 
+*@Brief:Holds the shark data three int SpawnTime,StarveTime and moved.
 */
 typedef struct{
 int SpawnTime;
@@ -21,8 +21,8 @@ int StarveTime;
 int moved;
 }Shark;
 /**
-*@param Struct Cell 
-*Holds the Cell Data a pointers to Shark Struct and Fish Struct.
+*@Name: Struct Cell 
+*@Brief:Holds the Cell Data a pointers to Shark Struct and Fish Struct.
 */
 typedef struct{
 Shark * shark;
@@ -30,8 +30,8 @@ Fish * fish;
 }Cell;
 
 /**
-*@param Struct Move 
-*
+*@Name: Struct Move 
+*@Brief: hold Four Int left,right,Up and Down of value 1 or 0
 */
 typedef struct{
 int left;

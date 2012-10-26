@@ -1,14 +1,21 @@
+/**	@Name:		Fish.h
+	@Authors:	James Kelly, Sean Senchyna.
+	@Brief:		This is the Fish Class. This class holds all the
+				Functionality of every Fish in the simulation. Controls 
+				the checks, movements, updates and death and creation of
+				other Sharks.
+	@Arguments:	N/A
+	@Returns:	N/A
+*/
 #ifndef FISH_H
 #define FISH_H
 #include "Cell.h"
 
 /**
-*CheckIfEmty
-* -Check If cell is Empty
-*@param Cell * c 
-*	-Pointer to cell you won't to check.
-*@return int 0 or 1
-*	-o indicate the cell is not available
+*@Name:CheckIfEmty
+*@Brief: Check If cell is Empty
+*@Arguments: Cell * c -Pointer to cell you won't to check.
+*@return int 0 or 1 -o indicate the cell is not available
 */
 int CheckIfEmty(Cell * M)
 {
@@ -19,10 +26,10 @@ int CheckIfEmty(Cell * M)
 	return 0;
 }
 /**
-*ChooseCell
-* -Choose a cell to move
-*@param Struct Move 
-*	-Cell Available To be Move too.
+*@Name:ChooseCell
+*@Brief: Choose a cell to move
+*@Arguments:
+*	Struct Move-Cell Available To be Move too.
 *@return int Dirrection
 *	-Position in array of avaiable cell -1 if no position available..
 */
@@ -64,12 +71,10 @@ int ChooseCell(Move Available)
 	return Dirrection;
 }
 /**
-*FishMove
-* -Moves Fish pointer from one cell to the next, Spawns Next fish when spawntime raech's o
-*@param Cell * Movto 
-*	-Cell To Move too.
-*@param Cell * currentCell
-*	- current Cell contioning Fish Object .
+*@Name:FishMove
+*@Brief Moves Fish pointer from one cell to the next, Spawns Next fish when spawntime raech's o
+*@Arguments: 	Cell * Movto -Cell To Move too.
+*				Cell * currentCell- current Cell contioning Fish Object .
 */
 void FishMove(Cell * Moveto, Cell * currentCell){
 	if(currentCell->fish->SpawnTime == 0)
@@ -90,18 +95,13 @@ void FishMove(Cell * Moveto, Cell * currentCell){
 }
 
 /**
-*FishUpadate
-* -Updates Fish
-*@param Cell * Fish 
-*	-Pointer to cell Containing Fish.
-*@param Cell ** tempworld 
-*	- 2d-Array Containg world Cells.
-*@param int x 
-*	-Row Cell is On.
-*@param int y 
-*	-Col cell On.
-@param int range 
-*	-Range represnts the number of cols and rows in the world used for wrap around.
+*@Name:FishUpadate
+*@Brief Updates Fish
+*@Arguments: Cell * Fish -Pointer to cell Containing Fish.
+*	Cell ** tempworld - 2d-Array Containg world Cells.
+*	int x -Row Cell is On.
+*	int y -Col cell On.
+*	int range -Range represnts the number of cols and rows in the world used for wrap around.
 */
 void FishUpdate(Cell * fish, Cell ** tempworld, int x, int y, int range)
 {   

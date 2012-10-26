@@ -96,7 +96,7 @@ int main(void)
 	int i;
 	int j;
 	int Year = 0;
-	int endYear = 10;
+	int endYear = 50;
 	while(Year < endYear)
 	{
 		for(i=0; i < Gridsize;i++)

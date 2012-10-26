@@ -1,7 +1,27 @@
+/**	@Name:		Shark.h
+	@Authors:	Mark Gethings, Gearóid Neville.
+	@Brief:		This is the Shark Class. This class holds all the
+				Functionality of every Shark in the simulation. Controls 
+				the checks, movements, updates and death and creation of
+				other Sharks.
+	@Arguments:	N/A
+	@Returns:	N/A
+*/
 #ifndef Shark_H
 #define Shark_H
 #include "Cell.h"
 
+
+/**	@Name:		CheckIfEmtyShark
+	@Brief:		This is the check every Shark makes before any movement
+				has been made. Checks if whether a Cell is empty, full
+				or has a Fish to eat in it.		
+	@Arguments:	Cell * M ( Takes in a pointer to a Cell )
+	@Returns:	This function has three return possibilities
+				1. It can return 0, which means the Cell is occupied.
+				2. It can return 1, which means the Cell has a Fish in it.
+				3. It can return 2, which means the Cell is unoccupied.
+*/
 int CheckIfEmtyShark(Cell * M)
 {
 	//return two if there is a fish to eat, 1 if there is a free space and 0 otherwise.
@@ -18,6 +38,16 @@ int CheckIfEmtyShark(Cell * M)
 	//printf("S");
 	return 0;
 }
+/**	@Name:		ChooseCellShark
+	@Brief:		This function dictates what direction the Shark should take.
+				This function takes into account the number of spaces available,
+				taking a priorty with the spaces with Fish in them, and then 
+				gives a direction for the Shark to move in if there is any cell
+				available.
+	@Arguments:	Move Available ( Takes in a struct Move ( A Direction ) )
+	@Returns:	Returns Dirrection ( An integer dictating the direction of the
+				movement of the Shark. )
+*/
 int ChooseCellShark(Move Available)
 {
 	int x = 0;
@@ -89,7 +119,17 @@ int ChooseCellShark(Move Available)
 	}
 	return Dirrection;
 }
-
+/**	@Name:		SharkMove
+	@Brief:		This function dictates what direction the Shark should take.
+				This function takes into account the number of spaces available,
+				taking a priorty with the spaces with Fish in them, and then 
+				gives a driection for the shark to move in if there is any cell
+				available.
+	@Arguments:	Cell * Moveto ( A pointer to a Cell that the Shark will move to), 
+				Cell * currentCell ( A pointer to a Cell that the Shark is currently in )
+	@Returns:	Returns Dirrection ( An integer dictating the direction of the
+				movement of the Shark. )
+*/
 void SharkMove(Cell * Moveto, Cell * currentCell){
 	currentCell->shark->SpawnTime--;
 	currentCell->shark->StarveTime--;
@@ -129,7 +169,17 @@ void SharkMove(Cell * Moveto, Cell * currentCell){
 	}
 	
 }
-
+/**	@Name:		SharkUpdate
+	@Brief:		This function updates tall the Sharks in the simulation. It controls the
+				wrap around for the Sharks, sets the new positions of new Sharks and checks
+				for possible Cells to occupy when Sharks are moving to new Cells.
+	@Arguments:	Cell * currentCell ( A ponter to a Cell that the shark is currently in ), 
+				Cell ** tempworld ( A ponter to a pointer of the simulation world where the Sharks and Fishes dwell ),
+				int x ( An integer that represents the left and right cells of the grid ),
+				int y ( An integer that represents the top and bottom cells of the grid ),
+				int range ( An integer that represents the length and width of the world grid. )
+	@Returns:	N/A.
+*/
 void SharkUpdate(Cell * currentCell, Cell ** tempworld, int x, int y, int range)
 {   
 	if(currentCell->shark != 0)
