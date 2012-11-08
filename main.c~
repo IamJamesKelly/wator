@@ -6,7 +6,6 @@
 #include "Fish.h"
 #include "Shark.h"
 #include <sys/timeb.h>
-#include <omp.h>
 /**
 *Make2dArray
 * -Create 2-d Array in memory
@@ -108,8 +107,7 @@ int main(void)
 		{
 
 			for(j=0; j < Gridsize;j++)
-			{      
- 
+			{       
 				if(world[i][j].fish != 0 && world[i][j].fish->moved != Year){
 					world[i][j].fish->moved = Year;
 					FishUpdate(&world[i][j], world, i, j, (Gridsize - 1));
