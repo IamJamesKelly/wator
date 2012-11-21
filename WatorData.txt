@@ -1,0 +1,180 @@
+{ Name:0,
+Type:serealized,
+TimeTaken: 1.926918,
+FramesPerSecond: 51.896344,
+Gridsize: 100,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:1,
+Type:serealized,
+TimeTaken: 1.960001,
+FramesPerSecond: 51.020382,
+Gridsize: 100,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:2,
+Type:serealized,
+TimeTaken: 1.868022,
+FramesPerSecond: 53.532561,
+Gridsize: 100,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:3,
+Type:serealized,
+TimeTaken: 1.864261,
+FramesPerSecond: 53.640560,
+Gridsize: 100,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:4,
+Type:serealized,
+TimeTaken: 1.898107,
+FramesPerSecond: 52.684067,
+Gridsize: 100,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:0,
+Type:serealized,
+TimeTaken: 1.255978,
+FramesPerSecond: 13.535270,
+Gridsize: 200,
+Year: 17,
+TargetYear: 100 } 
+
+
+{ Name:1,
+Type:serealized,
+TimeTaken: 7.641338,
+FramesPerSecond: 13.086714,
+Gridsize: 200,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:2,
+Type:serealized,
+TimeTaken: 7.518727,
+FramesPerSecond: 13.300124,
+Gridsize: 200,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:3,
+Type:serealized,
+TimeTaken: 1.309491,
+FramesPerSecond: 12.982142,
+Gridsize: 200,
+Year: 17,
+TargetYear: 100 } 
+
+
+{ Name:4,
+Type:serealized,
+TimeTaken: 1.160220,
+FramesPerSecond: 12.928584,
+Gridsize: 200,
+Year: 15,
+TargetYear: 100 } 
+
+
+{ Name:0,
+Type:serealized,
+TimeTaken: 2.573085,
+FramesPerSecond: 5.829578,
+Gridsize: 300,
+Year: 15,
+TargetYear: 100 } 
+
+
+{ Name:1,
+Type:serealized,
+TimeTaken: 17.253501,
+FramesPerSecond: 5.795925,
+Gridsize: 300,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:2,
+Type:serealized,
+TimeTaken: 1.505266,
+FramesPerSecond: 5.979010,
+Gridsize: 300,
+Year: 9,
+TargetYear: 100 } 
+
+
+{ Name:3,
+Type:serealized,
+TimeTaken: 17.000765,
+FramesPerSecond: 5.882088,
+Gridsize: 300,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:4,
+Type:serealized,
+TimeTaken: 1.532572,
+FramesPerSecond: 5.872481,
+Gridsize: 300,
+Year: 9,
+TargetYear: 100 } 
+
+
+{ Name:0,
+Type:serealized,
+TimeTaken: 3.277747,
+FramesPerSecond: 3.355964,
+Gridsize: 400,
+Year: 11,
+TargetYear: 100 } 
+
+
+{ Name:1,
+Type:serealized,
+TimeTaken: 3.332516,
+FramesPerSecond: 3.300809,
+Gridsize: 400,
+Year: 11,
+TargetYear: 100 } 
+
+
+{ Name:2,
+Type:serealized,
+TimeTaken: 3.461779,
+FramesPerSecond: 3.177557,
+Gridsize: 400,
+Year: 11,
+TargetYear: 100 } 
+
+
+{ Name:3,
+Type:serealized,
+TimeTaken: 5.107677,
+FramesPerSecond: 3.132540,
+Gridsize: 400,
+Year: 16,
+TargetYear: 100 } 
+
+
+{ Name:4,
+Type:serealized,
+TimeTaken: 30.850623,
+FramesPerSecond: 3.241426,
+Gridsize: 400,
+Year: 100,
+TargetYear: 100 } 
+
+

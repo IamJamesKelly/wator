@@ -7,6 +7,7 @@
 #include "Shark.h"
 #include <sys/timeb.h>
 #include <omp.h>
+#include <string.h>
 /**
 *Make2dArray
 * -Create 2-d Array in memory
@@ -85,31 +86,43 @@ void PopulateWorld(int nFish,int nSharks,int rows, int cols,Cell ** world)
 	}
 
 }
-int main(void)
+void loopMain(int run,int scale)
 {
 	//printf("Cunt");
+	FILE * file; 
+	file = fopen("WatorData.txt","a+");
+	fprintf(file,"%s","{ Name:");
+	fprintf(file, "%d",run);
+	fprintf(file,"%s",",");
+	fprintf(file,"%s","\nType:serealized,");
+
 	srand(time(NULL));
-	int Gridsize = 30;
-	int FishPop = 200;
-	int SharkPop = 6;
+	int Gridsize = 100 * scale;
+
+	int FishPop = 500 * scale;
+
+	int SharkPop = 50 * scale;
+
 	Cell ** world = Make2dArray(Gridsize,Gridsize);
+
 	PopulateWorld(FishPop,SharkPop,Gridsize,Gridsize,world);
 	
 	int i;
 	int j;
 	int Year = 0;
-	int endYear = 1000;
+	int YearReached= 0;
+	int endYear = 100;
 	struct timeval tim;  
   	gettimeofday(&tim, NULL);  
-   	double dTime1 = tim.tv_sec+(tim.tv_usec/1000000.0);  
+   	double dTime1 = tim.tv_sec+(tim.tv_usec/1000000.0); 
+
+	
 	while(Year < endYear)
 	{
 		for(i=0; i < Gridsize;i++)
 		{
-
 			for(j=0; j < Gridsize;j++)
 			{      
- 
 				if(world[i][j].fish != 0 && world[i][j].fish->moved != Year){
 					world[i][j].fish->moved = Year;
 					FishUpdate(&world[i][j], world, i, j, (Gridsize - 1));
@@ -121,11 +134,6 @@ int main(void)
 				}
 			}
 		}
-      		for(i=0; i <= (Gridsize * 2);i++)
-		{
-			printf("_");
-		}
-		printf("\n");
       		SharkPop = 0;
       		FishPop = 0;
 		for(i=0; i < Gridsize;i++)
@@ -133,7 +141,6 @@ int main(void)
 
 			for(j=0; j < Gridsize;j++)
 			{  
-			printf("|"); 
 				if(world[i][j].shark != 0)
 				{
 					printf("S");
@@ -150,33 +157,64 @@ int main(void)
 				}
 				
 			}
-			printf("|\n");
 
 		}
-	    	for(i=0; i <= (Gridsize * 2);i++)
-		{
-			printf("_");
-		}
 		
-		printf("\n");
-		printf("%i ", SharkPop);
-		printf("%i\n", FishPop);
 		
 		Year++;
+		YearReached++;
 		if(SharkPop == 0 || FishPop == 0)
 		{
 			Year = endYear;
 		}
-	} 
+	}
+
+	printf("\n");
+	printf("%i ", SharkPop);
+	printf("%i\n", FishPop);
+		
+	printf("%s\n\n\n\n","endrun" );
 	gettimeofday(&tim, NULL);  
-    	double dTime2 = tim.tv_sec+(tim.tv_usec/1000000.0); 
+
+    double dTime2 = tim.tv_sec+(tim.tv_usec/1000000.0); 
+
 	double Sec = (dTime2 - dTime1); 
-	double fps = (double)endYear/Sec;
-	printf("TimeTaken          = %f (seconds)\n", Sec);
-	printf("Frames Per Second  = %f (seconds)\n", fps);
-	for (i = 0; i < Gridsize; i++){  
-	free( world [i]);  
-	}	  
-	free(world); 
+
+
+	double fps = (double)YearReached/Sec;
+
+	fprintf(file,"%s","\nTimeTaken: ");
+	fprintf(file, "%f",Sec );
+	fprintf(file,"%s",",\nFramesPerSecond: ");
+	fprintf(file, "%f",fps );
+	fprintf(file,"%s",",\nGridsize: ");	
+	fprintf(file, "%d",Gridsize );
+	fprintf(file,"%s",",\nYear: ");	
+	fprintf(file, "%d",YearReached );
+	fprintf(file,"%s",",\nTargetYear: ");	
+	fprintf(file, "%d",endYear );
+	fprintf(file,"%s"," } \n\n\n");	
+//	for (i = 0; i < Gridsize; i++){  
+//	free( world [i]);  
+//	}	  
+//	free(world); 
+	fclose(file);
+
+}
+int main()
+{
+	int runs = 5;
+	int run;
+	int scaleTo = 5;
+	int scale;
+	for(scale = 1; scale < scaleTo;scale++)
+	{
+		for(run = 0; run < runs;run++)
+		{
+			loopMain(run,scale);
+		}
+		
+	}
+
 
 }

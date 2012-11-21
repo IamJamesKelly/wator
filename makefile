@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I.
+CFLAGS=-I . -fopenmp
 APP=Wator
 
 build: main.o
