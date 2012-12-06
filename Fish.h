@@ -45,6 +45,7 @@ int ChooseCell(Move Available)
 		x = 1;
 		Dirrection = -1;
 	}
+	
 	while(x == 0)
 	{
 		int r = rand() % 4;
@@ -77,8 +78,10 @@ int ChooseCell(Move Available)
 *				Cell * currentCell- current Cell contioning Fish Object .
 */
 void FishMove(Cell * Moveto, Cell * currentCell){
+
 	if(currentCell->fish->SpawnTime == 0)
 	{
+
 		currentCell->fish->SpawnTime = 3;
 		Moveto->fish = malloc(sizeof(Fish));
 		Moveto->fish->SpawnTime = 3;

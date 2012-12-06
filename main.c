@@ -8,6 +8,7 @@
 #include <sys/timeb.h>
 #include <omp.h>
 #include <string.h>
+
 /**
 *Make2dArray
 * -Create 2-d Array in memory
@@ -25,7 +26,6 @@ Cell ** Make2dArray(int row,int col)
 	int i = 0;
 	for (i = 0; i < row; i++)  
 		array[i] = (Cell*) malloc(col*sizeof(Cell));  
-
    return array;  
 }
 /**
@@ -44,6 +44,7 @@ Cell * randomEmptyCell(Cell ** world,int row,int col)
 {
 	int randomCol = rand() % row;
 	int randomRow = rand() % col;
+
 	while(world[randomRow][randomCol].fish != 0 && world[randomRow][randomCol].shark != 0)
 	{
 		randomCol = rand() % row;
@@ -76,6 +77,8 @@ void PopulateWorld(int nFish,int nSharks,int rows, int cols,Cell ** world)
 		p->fish->SpawnTime=3;
 	}
 	int j;
+	
+  
 	for (j = 0; j < nSharks; ++j)
 	{
 		p = randomEmptyCell(world,rows,cols);
@@ -84,24 +87,30 @@ void PopulateWorld(int nFish,int nSharks,int rows, int cols,Cell ** world)
 		p->shark->SpawnTime = 4;
 		p->shark->StarveTime = 3;
 	}
-
 }
 void loopMain(int run,int scale)
 {
 	//printf("Cunt");
+	
+
+
+
+
 	FILE * file; 
 	file = fopen("WatorData.txt","a+");
 	fprintf(file,"%s","{ Name:");
 	fprintf(file, "%d",run);
 	fprintf(file,"%s",",");
-	fprintf(file,"%s","\nType:serealized,");
-
+	fprintf(file,"%s","\nType:Seiral,");
+	
 	srand(time(NULL));
-	int Gridsize = 100 * scale;
 
-	int FishPop = 500 * scale;
+	int Gridsize = 10 * scale;
 
-	int SharkPop = 50 * scale;
+
+	int FishPop = 10 * scale;
+
+	int SharkPop = 10 * scale;
 
 	Cell ** world = Make2dArray(Gridsize,Gridsize);
 
@@ -116,60 +125,85 @@ void loopMain(int run,int scale)
   	gettimeofday(&tim, NULL);  
    	double dTime1 = tim.tv_sec+(tim.tv_usec/1000000.0); 
 
-	
+	SharkPop = 0;				
+	FishPop = 0;
+		
+		
 	while(Year < endYear)
 	{
-		for(i=0; i < Gridsize;i++)
+		#pragma omp parallel firstprivate(world,i,j)
 		{
-			for(j=0; j < Gridsize;j++)
-			{      
-				if(world[i][j].fish != 0 && world[i][j].fish->moved != Year){
-					world[i][j].fish->moved = Year;
-					FishUpdate(&world[i][j], world, i, j, (Gridsize - 1));
-				}
-				else if(world[i][j].shark != 0 && world[i][j].shark->moved != Year)
+			for(i=0; i < Gridsize;i++)
+			{
+				#pragma omp for
+				for(j=0; j < Gridsize;j++)
 				{
-					world[i][j].shark->moved = Year;
-					SharkUpdate(&world[i][j], world, i, j, (Gridsize - 1));
+					if(world[i][j].shark != 0 && world[i][j].shark->moved != Year)
+					{
+					
+						world[i][j].shark->moved = Year;
+						SharkUpdate(&world[i][j], world, i, j, (Gridsize - 1));
+						
+					}
+					if(world[i][j].shark != 0)
+					{
+						if(world[i][j].fish != 0)
+						{
+							world[i][j].shark->StarveTime = 4;
+							world[i][j].fish =0;
+							FishPop--;
+						}
+						if(world[i][j].shark->StarveTime <= 0)
+						{
+							world[i][j].shark = 0;
+							SharkPop--;
+						}
+						
+						SharkPop++;
+					}
+					else if(world[i][j].fish != 0)
+					{
+						
+						FishPop++;
+					}
+					if(world[i][j].fish != 0 && world[i][j].fish->moved != Year){
+						world[i][j].fish->moved = Year;
+						FishUpdate(&world[i][j], world, i, j, (Gridsize - 1));
+					}
 				}
 			}
 		}
-      		SharkPop = 0;
-      		FishPop = 0;
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
 		for(i=0; i < Gridsize;i++)
-		{
-
+		{		
 			for(j=0; j < Gridsize;j++)
-			{  
+			{
 				if(world[i][j].shark != 0)
-				{
 					printf("S");
-					SharkPop++;
-				}
 				else if(world[i][j].fish != 0)
-				{
 					printf("F");
-					FishPop++;
-				}
-				else
-				{
-					printf(" ");
-				}
-				
+				else 
+					printf("-");
 			}
-
+			
+			printf("\n");
 		}
-		
-		
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
 		Year++;
 		YearReached++;
 		if(SharkPop == 0 || FishPop == 0)
 		{
 			Year = endYear;
-		}
+		}	
 	}
-
 	printf("\n");
+
 	printf("%i ", SharkPop);
 	printf("%i\n", FishPop);
 		
@@ -203,18 +237,7 @@ void loopMain(int run,int scale)
 }
 int main()
 {
-	int runs = 5;
-	int run;
-	int scaleTo = 5;
-	int scale;
-	for(scale = 1; scale < scaleTo;scale++)
-	{
-		for(run = 0; run < runs;run++)
-		{
-			loopMain(run,scale);
-		}
-		
-	}
-
-
+	int tread = 12;
+	int scale = 1;
+	loopMain(tread,scale);
 }

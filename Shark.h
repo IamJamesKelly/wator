@@ -66,7 +66,8 @@ int ChooseCellShark(Move Available)
 		Available.up == 1 ||
 		Available.down == 1)
 	{
-		//printf("Should Eat\n");
+		//printf("Should Eat\n")
+		//#pragma ibm parallel_loop
 		while(x == 0)
 		{
 			//srand(time(NULL));
@@ -93,30 +94,7 @@ int ChooseCellShark(Move Available)
 			}
 		}
 	}
-	while(x == 0)
-	{
-		int r = rand() % 4;
-
-		Dirrection = r;
-		switch(r){
-			case 0:
-		    if(Available.up == 2)
-				x = 1;
-			break;
-			case 1:
-			if(Available.down == 2)
-				x = 1;
-			break;
-			case 2:
-			if(Available.left == 2)
-				x = 1;
-			break;
-			case 3:
-			if(Available.right == 2)
-				x = 1;
-			break;
-		}
-	}
+	
 	return Dirrection;
 }
 /**	@Name:		SharkMove
@@ -131,36 +109,19 @@ int ChooseCellShark(Move Available)
 				movement of the Shark. )
 */
 void SharkMove(Cell * Moveto, Cell * currentCell){
+	
+
 	currentCell->shark->SpawnTime--;
 	currentCell->shark->StarveTime--;
-	if(currentCell->shark->StarveTime <= 0){
-		//printf("Dead\n");
-		currentCell->shark = 0;
-	}
-	else if(currentCell->shark->SpawnTime == 0)
+	if(currentCell->shark->SpawnTime == 0)
 	{
 		//printf("Should Spawn \n");
-		currentCell->shark->SpawnTime = 7;
-		if(Moveto->fish != 0)
-		{
-			//printf("Eat\n");
-			currentCell->shark->StarveTime = 10;
-			Moveto->fish = 0;
-
-		}
-			
+		currentCell->shark->SpawnTime = 7;	
 		Moveto->shark = malloc(sizeof(Shark));
 		Moveto->shark->SpawnTime = 7;
 		Moveto->shark->StarveTime = 4;
 		Moveto->shark->moved = currentCell->shark->moved;
 		
-	}
-	else if(Moveto->fish != 0){
-		//printf("Eat\n");
-		currentCell->shark->StarveTime = 4;
-		Moveto->fish = 0;
-		Moveto->shark = currentCell->shark;
-		currentCell->shark = 0;
 	}
 	else
 	{
@@ -182,6 +143,7 @@ void SharkMove(Cell * Moveto, Cell * currentCell){
 */
 void SharkUpdate(Cell * currentCell, Cell ** tempworld, int x, int y, int range)
 {   
+
 	if(currentCell->shark != 0)
 	{
 		Move Available;
