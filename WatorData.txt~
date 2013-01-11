@@ -1,0 +1,27 @@
+{ Name:12,
+Type:Serial,
+TimeTaken: 49.907250,
+FramesPerSecond: 2.003717,
+Gridsize: 500,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 72.299752,
+FramesPerSecond: 1.383131,
+Gridsize: 600,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 98.226406,
+FramesPerSecond: 1.018056,
+Gridsize: 700,
+Year: 100,
+TargetYear: 100 } 
+
+

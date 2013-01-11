@@ -90,27 +90,22 @@ void PopulateWorld(int nFish,int nSharks,int rows, int cols,Cell ** world)
 }
 void loopMain(int run,int scale)
 {
-	//printf("Cunt");
-	
-
-
-
 
 	FILE * file; 
 	file = fopen("WatorData.txt","a+");
 	fprintf(file,"%s","{ Name:");
 	fprintf(file, "%d",run);
 	fprintf(file,"%s",",");
-	fprintf(file,"%s","\nType:Seiral,");
+	fprintf(file,"%s","\nType:Serial,");
 	
 	srand(time(NULL));
 
 	int Gridsize = 10 * scale;
 
 
-	int FishPop = 10 * scale;
+	int FishPop = 30 * scale;
 
-	int SharkPop = 10 * scale;
+	int SharkPop = 30 * scale;
 
 	Cell ** world = Make2dArray(Gridsize,Gridsize);
 
@@ -118,6 +113,7 @@ void loopMain(int run,int scale)
 	
 	int i;
 	int j;
+	int k;
 	int Year = 0;
 	int YearReached= 0;
 	int endYear = 100;
@@ -131,8 +127,14 @@ void loopMain(int run,int scale)
 		
 	while(Year < endYear)
 	{
-		#pragma omp parallel firstprivate(world,i,j)
+		
+		//To switch between two parallel versions of code do the following:
+		// Uncomment 	//#pragma omp parallel firstprivate(world,i,j)
+		// Comment out the #pragma omp for imediatly after it.	
+
+		//#pragma omp parallel firstprivate(world,i,j)
 		{
+			#pragma omp for
 			for(i=0; i < Gridsize;i++)
 			{
 				#pragma omp for
@@ -177,20 +179,21 @@ void loopMain(int run,int scale)
 		printf("\n");
 		printf("\n");
 		printf("\n");
-		for(i=0; i < Gridsize;i++)
-		{		
-			for(j=0; j < Gridsize;j++)
-			{
+		#pragma omp for
+		for(k=0; k < Gridsize * Gridsize;k++)
+            	{
+                i = k / Gridsize;
+                j = k % Gridsize;
+
 				if(world[i][j].shark != 0)
-					printf("S");
+					fputs("S",stdout);
 				else if(world[i][j].fish != 0)
-					printf("F");
+					fputs("F",stdout);
 				else 
-					printf("-");
-			}
-			
+					fputs("-",stdout);
+		if(j == Gridsize-1)
 			printf("\n");
-		}
+	     	}
 		printf("\n");
 		printf("\n");
 		printf("\n");
@@ -238,6 +241,6 @@ void loopMain(int run,int scale)
 int main()
 {
 	int tread = 12;
-	int scale = 1;
+	int scale = 50;
 	loopMain(tread,scale);
 }

@@ -1,50 +1,198 @@
 { Name:12,
-Type:parrelel,
-TimeTaken: 28.936511,
-FramesPerSecond: 3.455842,
-Gridsize: 10000,
+Type:Serial,
+TimeTaken: 200.291286,
+FramesPerSecond: 0.499273,
+Gridsize: 1000,
 Year: 100,
 TargetYear: 100 } 
 
+
 { Name:12,
-Type:Seiral,
-TimeTaken: 55.994670,
-FramesPerSecond: 1.785884,
-Gridsize: 10000,
+Type:Serial,
+TimeTaken: 191.072683,
+FramesPerSecond: 0.523361,
+Gridsize: 1000,
 Year: 100,
 TargetYear: 100 } 
 
+
 { Name:12,
-Type:parrelel,
-TimeTaken: 0.095373,
-FramesPerSecond: 1048.515710,
+Type:Serial,
+TimeTaken: 190.441428,
+FramesPerSecond: 0.525096,
+Gridsize: 1000,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 1.872790,
+FramesPerSecond: 53.396267,
 Gridsize: 100,
 Year: 100,
 TargetYear: 100 } 
 
+
 { Name:12,
-Type:Seiral,
-TimeTaken: 0.028422,
-FramesPerSecond: 3518.386726,
+Type:Serial,
+TimeTaken: 0.459372,
+FramesPerSecond: 217.688476,
+Gridsize: 50,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 0.741575,
+FramesPerSecond: 134.848127,
+Gridsize: 50,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 0.459683,
+FramesPerSecond: 217.541246,
+Gridsize: 50,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 2.082486,
+FramesPerSecond: 48.019527,
 Gridsize: 100,
 Year: 100,
 TargetYear: 100 } 
 
+
 { Name:12,
-Type:prallel,
-TimeTaken: 10.529724,
-FramesPerSecond: 9.496925,
-Gridsize: 5000,
+Type:Serial,
+TimeTaken: 1.421956,
+FramesPerSecond: 70.325661,
+Gridsize: 50,
 Year: 100,
 TargetYear: 100 } 
 
+
 { Name:12,
-Type:Seiral,
-TimeTaken: 16.968675,
-FramesPerSecond: 5.893212,
-Gridsize: 5000,
+Type:Serial,
+TimeTaken: 1.410829,
+FramesPerSecond: 70.880309,
+Gridsize: 50,
 Year: 100,
 TargetYear: 100 } 
 
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 0.436571,
+FramesPerSecond: 229.057753,
+Gridsize: 50,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 0.005050,
+FramesPerSecond: 19802.200085,
+Gridsize: 10,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 0.435148,
+FramesPerSecond: 229.806870,
+Gridsize: 50,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 1.873806,
+FramesPerSecond: 53.367318,
+Gridsize: 100,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 7.592982,
+FramesPerSecond: 13.170056,
+Gridsize: 200,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 18.822118,
+FramesPerSecond: 5.312898,
+Gridsize: 300,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 30.442099,
+FramesPerSecond: 3.284925,
+Gridsize: 400,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 47.136177,
+FramesPerSecond: 2.121513,
+Gridsize: 500,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 68.555305,
+FramesPerSecond: 1.458676,
+Gridsize: 600,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 93.421225,
+FramesPerSecond: 1.070421,
+Gridsize: 700,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 190.447926,
+FramesPerSecond: 0.525078,
+Gridsize: 1000,
+Year: 100,
+TargetYear: 100 } 
+
+
+{ Name:12,
+Type:Serial,
+TimeTaken: 47.189535,
+FramesPerSecond: 2.119114,
+Gridsize: 500,
+Year: 100,
+TargetYear: 100 } 
 
 
